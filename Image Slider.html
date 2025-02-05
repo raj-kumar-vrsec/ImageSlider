@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background: #fff;
+        }
+        .slides {
+            position: relative;
+            height: 500px;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 80%;
+            backdrop-filter: blur(2px);
+        }
+        .caption-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .caption-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+        .thumbnails-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .thumbnail {
+            min-width: 80px;
+            height: 60px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            object-fit: cover;
+        }
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #ffffff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Image Slider Project</h1>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <img src="Amazon Rainforest.jpeg" alt="Amazon Rainforest">
+                <div class="caption">
+                    <div class="caption-title">Amazon Rainforest</div>
+                    <p class="caption-description">The world's largest tropical rainforest spanning nine countries</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="Taj Mahal.jpeg" alt="Taj Mahal">
+                <div class="caption">
+                    <div class="caption-title">Taj Mahal</div>
+                    <p class="caption-description">Iconic white marble mausoleum in India, built by Shah Jahan</p>
+                </div>
+            </div>
+            <div class="slide">
+    		<img src="Machu Pichu.jpeg" alt="Machu Picchu">
+    		<div class="caption">
+        	<div class="caption-title">Machu Picchu</div>
+        	<p class="caption-description">15th-century Inca citadel located in the Eastern Cordillera of Peru</p>
+    		</div>
+	</div>
+		<div class="slide">
+    		<img src="Burj Khalifa.jpeg" alt="Burj Khalifa">
+    		<div class="caption">
+        	<div class="caption-title">Burj Khalifa</div>
+        	<p class="caption-description">The tallest building in the world, located in Dubai, UAE, standing at 828 		meters tall.</p>
+    	</div>
+	</div>
+
+<div class="slide">
+    <img src="Great wall of China.jpeg" alt="Great Wall of China">
+    <div class="caption">
+        <div class="caption-title">Great Wall of China</div>
+        <p class="caption-description">An ancient series of fortifications built to protect Chinese states from invasions, stretching over 13,000 miles.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <img src="Eiffel Tower.jpeg" alt="Eiffel Tower">
+    <div class="caption">
+        <div class="caption-title">Eiffel Tower</div>
+        <p class="caption-description">An iconic wrought-iron lattice tower in Paris, France, standing 330 meters tall, built for the 1889 World’s Fair.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <img src="Egypt Pyramids.jpeg" alt="Egypt Pyramids">
+    <div class="caption">
+        <div class="caption-title">Egyptian Pyramids</div>
+        <p class="caption-description">Ancient pyramid structures, including the Great Pyramid of Giza, serving as tombs for pharaohs in Egypt.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <img src="Western Ghats.jpeg" alt="Western Ghats">
+    <div class="caption">
+        <div class="caption-title">Western Ghats</div>
+        <p class="caption-description">A mountain range along the western coast of India, known for its rich biodiversity and UNESCO World Heritage status.</p>
+    </div>
+</div>
+
+</div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    <div class="thumbnails-container"></div>
+
+    <script>
+         let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const thumbnailsContainer = document.querySelector('.thumbnails-container');
+
+        // Initialize thumbnails
+        slides.forEach((slide, index) => {
+            const img = slide.querySelector('img').cloneNode();
+            const thumbnail = document.createElement('img');
+            thumbnail.className = 'thumbnail';
+            thumbnail.src = img.src;
+            thumbnail.addEventListener('click', () => goToSlide(index));
+            thumbnailsContainer.appendChild(thumbnail);
+        });
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        function updateActiveStates() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentIndex].classList.add('active');
+            
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[currentIndex].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            updateActiveStates();
+        }
+
+        function moveSlide(step) {
+            goToSlide(currentIndex + step);
+        }
+
+        function autoSlide() {
+            moveSlide(1);
+        }
+
+        // Set initial active states
+        updateActiveStates();
+        setInterval(autoSlide, 5000);
+
+    </script>
+</body>
+</html>
